@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo '**** Start configuration Angular *****'
+#cd /var/www/html
+
+echo '**** Install dependency Angular *****'
+npm install
+
+echo '**** lancement Symfony *****'
+npm start

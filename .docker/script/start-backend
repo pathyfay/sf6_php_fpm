@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo '**** Start configuration Symfony *****'
+export NGINX_DOCUMENT_ROOT="${NGINX_DOCUMENT_ROOT:-/var/www/html/public}"
+#export NGINX_SERVER_NAME="${NGINX_SERVER_NAME:-localhost}"
+#export NGINX_PHP_UPSTREAM="${NGINX_PHP_UPSTREAM:-localhost:9000}"
+#export NGINX_WEBROOT="${NGINX_WEBROOT:-/var/www/html/public}"
+#export NGINX_LISTEN_PORT="${NGINX_LISTEN_PORT:-80}"
+#export NGINX_LISTEN_PORT_SSL="${NGINX_LISTEN_PORT_SSL:-443}"
+
+echo "**** Installer les dépendances Symfony et nettoyer le cache ****"
+#composer install --optimize-autoloader --no-dev
+#php bin/console cache:clear
+
+echo "**** Démarrer PHP-FPM via supervisor pour gérer plusieurs processus  ****"
+exec supervisord -c /etc/supervisor/conf.d/supervisord.conf
